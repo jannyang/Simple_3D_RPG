@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < rays.Length; i++)
         {
-            Debug.Log(Physics.Raycast(rays[i], 0.1f, groundLayerMask));
+            Debug.Log(Physics.Raycast(rays[i],2f));
             if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
             {
                 
@@ -118,9 +118,9 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position + (transform.forward * 0.2f), Vector3.down);
-        Gizmos.DrawRay(transform.position + (-transform.forward * 0.2f), Vector3.down);
-        Gizmos.DrawRay(transform.position + (-transform.right * 0.2f), Vector3.down);
-        Gizmos.DrawRay(transform.position + (transform.right * 0.2f), Vector3.down);
+        Gizmos.DrawRay(transform.position + (transform.forward * 0.2f), Vector3.down * 0.1f);
+        Gizmos.DrawRay(transform.position + (-transform.forward * 0.2f), Vector3.down * 0.1f);
+        Gizmos.DrawRay(transform.position + (-transform.right * 0.2f), Vector3.down * 0.1f);
+        Gizmos.DrawRay(transform.position + (transform.right * 0.2f), Vector3.down * 0.1f);
     }
 }
