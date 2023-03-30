@@ -8,7 +8,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [SerializeField]
     private RectTransform lever;
     private RectTransform rectTransform;
-    
+
     [SerializeField]
     private float cor;
 
@@ -25,7 +25,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void Update()
     {
-        if(isInput)
+        if (isInput)
         {
             InputControlVector();
         }
