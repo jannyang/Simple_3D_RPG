@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac023803373c1c4082b2cf9a1659cf5, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  type: 0
-  icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 0
-  maxStackAmount: 0
+  displayName: Banana
+  description: This is a food you can eat
+  type: 2
+  icon: {fileID: 21300000, guid: 0ea746fff16a7c244b1053a5c6fab759, type: 3}
+  dropPrefab: {fileID: 3398919027999589670, guid: 16f291cc8c8904d4aa976db88a04e14d, type: 3}
+  canStack: 1
+  maxStackAmount: 12

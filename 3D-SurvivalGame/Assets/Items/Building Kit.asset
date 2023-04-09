@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac023803373c1c4082b2cf9a1659cf5, type: 3}
   m_Name: Building Kit
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  type: 0
-  icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
+  displayName: Building Kit
+  description: Used to construct shelter, crafting table, and equipment
+  type: 1
+  icon: {fileID: 21300000, guid: 5dbd1b94f01511d4fb5808f021a8af89, type: 3}
+  dropPrefab: {fileID: 6336432421002704676, guid: 2865c16c9462cd441bca94ecaea96f76, type: 3}
   canStack: 0
   maxStackAmount: 0
