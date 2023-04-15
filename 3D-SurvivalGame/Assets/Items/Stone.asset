@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac023803373c1c4082b2cf9a1659cf5, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
+  displayName: Stone
+  description: A common resource gathered from stone
   type: 0
-  icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 0
-  maxStackAmount: 0
+  icon: {fileID: 21300000, guid: d90750923f10fd045b862f566be55c4d, type: 3}
+  dropPrefab: {fileID: 8288578449649481085, guid: 32e552a02e9229e45beded66621357cf, type: 3}
+  canStack: 1
+  maxStackAmount: 12

@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 mouseDelta;
     private Rigidbody rig;
 
+
+    [HideInInspector]
+    public bool canLook = true;
+
     [Header("Look")]
     public Transform cameraContainer;
     public float minXLook;
@@ -80,7 +84,8 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraLook();
+        if(canLook == true)
+            CameraLook();
     }
 
     private void CameraLook()
@@ -122,5 +127,11 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawRay(transform.position + (-transform.forward * 0.2f), Vector3.down * 0.1f);
         Gizmos.DrawRay(transform.position + (-transform.right * 0.2f), Vector3.down * 0.1f);
         Gizmos.DrawRay(transform.position + (transform.right * 0.2f), Vector3.down * 0.1f);
+    }
+
+    public void ToggleCursor(bool toggle)
+    {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 }
