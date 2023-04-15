@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerStateReusableData
     {
         public Vector2 MovementInput { get; set; }
+        public Vector3 playerPositionOnFall { get; set; }
         public bool AttackInput { get; set; }
-
         public int ComboStateIndex { get; set; } = 0;
 
         public float MovementSpeedModifier { get; set; } = 1f;

@@ -3,13 +3,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerAttackingState : PlayerGroundedState
     {
         private bool shouldRotating;
 
-        public PlayerAttackingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerAttackingState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
         public override void Enter()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     [CreateAssetMenu(fileName = "Player", menuName = "Genshin Impact Movement System/Characters/Player")]
     public class PlayerSO : ScriptableObject

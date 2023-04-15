@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerIdlingState : PlayerGroundedState
     {
-        public PlayerIdlingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerIdlingState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 

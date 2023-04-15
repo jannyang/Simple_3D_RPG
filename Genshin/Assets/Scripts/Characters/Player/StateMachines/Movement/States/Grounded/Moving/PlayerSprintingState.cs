@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerSprintingState : PlayerMovingState
     {
@@ -10,7 +10,7 @@ namespace GenshinImpactMovementSystem
         private bool keepSprinting;
         private bool shouldResetSprintState;
 
-        public PlayerSprintingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerSprintingState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 

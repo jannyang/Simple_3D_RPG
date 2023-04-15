@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     [Serializable]
     public class PlayerGroundedData

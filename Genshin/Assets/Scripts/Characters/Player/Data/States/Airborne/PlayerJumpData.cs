@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     [Serializable]
     public class PlayerJumpData

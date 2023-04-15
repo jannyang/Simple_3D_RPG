@@ -1,10 +1,10 @@
 using UnityEngine.InputSystem;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerHardLandingState : PlayerLandingState
     {
-        public PlayerHardLandingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerHardLandingState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerLightLandingState : PlayerLandingState
     {
-        public PlayerLightLandingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerLightLandingState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 

@@ -2,7 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class CameraCursor : MonoBehaviour
     {

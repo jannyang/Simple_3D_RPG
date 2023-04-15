@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerJumpingState : PlayerAirborneState
     {
         private bool shouldKeepRotating;
         private bool canStartFalling;
 
-        public PlayerJumpingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerJumpingState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 

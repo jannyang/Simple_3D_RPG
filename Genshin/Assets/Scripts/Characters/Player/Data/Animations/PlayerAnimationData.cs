@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     [Serializable]
     public class PlayerAnimationData
@@ -29,6 +29,7 @@ namespace GenshinImpactMovementSystem
 
         [Header("Airborne Parameter Names")]
         [SerializeField] private string fallParameterName = "isFalling";
+        [SerializeField] private string flyParameterName = "isFlying";
 
         public int GroundedParameterHash { get; private set; }
         public int MovingParameterHash { get; private set; }
@@ -50,6 +51,7 @@ namespace GenshinImpactMovementSystem
         public int ComboAttackParameterHash { get; private set; }
 
         public int FallParameterHash { get; private set; }
+        public int FlyParameterHash { get; private set; }
 
         public void Initialize()
         {
@@ -73,6 +75,7 @@ namespace GenshinImpactMovementSystem
             ComboAttackParameterHash = Animator.StringToHash(comboAttackParameterName);
 
             FallParameterHash = Animator.StringToHash(fallParameterName);
+            FlyParameterHash = Animator.StringToHash(flyParameterName);
         }
     }
 }

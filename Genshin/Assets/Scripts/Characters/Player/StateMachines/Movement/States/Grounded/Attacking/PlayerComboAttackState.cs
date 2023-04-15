@@ -1,26 +1,30 @@
-using GenshinImpactMovementSystem;
+using RPGStateMachineSystem;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerComboAttackState : PlayerAttackingState
     {
         bool alreadyApplyCombo = false;
         bool alreadyAppliedForce = false;
-
+        
         Vector3 currentPosition;
         Vector3 targetPosition;
 
         float startTime;
         float endTime;
+        float tickTime;
 
         AttackInfoData attackInfoData;
 
 
-        public PlayerComboAttackState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerComboAttackState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 
@@ -71,7 +75,7 @@ namespace GenshinImpactMovementSystem
                     AddForceTrigger();
 
                 if (normalizedTime >= attackInfoData.ComboTransitionTime)
-                    ComboAttackTrigger(normalizedTime);
+                    ComboAttackTrigger();
             }
 
 
@@ -86,7 +90,7 @@ namespace GenshinImpactMovementSystem
         }
 
 
-        private void ComboAttackTrigger(float normalizedTime)
+        private void ComboAttackTrigger()
         {
             if (alreadyApplyCombo) return;
 
@@ -105,8 +109,12 @@ namespace GenshinImpactMovementSystem
             if (alreadyAppliedForce) return;
             startTime = Time.time;
             endTime = startTime + attackInfoData.ForceTime;
+            tickTime = Time.time;
+
             currentPosition = stateMachine.Player.transform.position;
+            currentPosition.y = 0;
             targetPosition = currentPosition + stateMachine.Player.transform.forward * attackInfoData.ForceDistance;
+            targetPosition.y = 0;
 
             alreadyAppliedForce = true;
         }
@@ -117,12 +125,37 @@ namespace GenshinImpactMovementSystem
             if (nowTime > endTime)
                 return;
 
-                float normalizedTime = (Time.time - startTime) / attackInfoData.ForceTime;
-                Vector3 newPosition = Vector3.Lerp(currentPosition, targetPosition, normalizedTime);
+            float perTime = nowTime - tickTime;
 
-                stateMachine.Player.Rigidbody.MovePosition(newPosition);
-            
+            Vector3 playerForward =stateMachine.Player.transform.forward;
+            Vector3 capsuleColliderCenterInWorldSpace = stateMachine.Player.ResizableCapsuleCollider.CapsuleColliderData.Collider.bounds.center;
+            float distance = attackInfoData.ForceDistance * (perTime / attackInfoData.ForceTime);
+
+            Ray downwardsRay = new Ray(capsuleColliderCenterInWorldSpace + (playerForward * distance), Vector3.down);
+            RaycastHit hit;
+
+            if (Physics.Raycast(new Ray(capsuleColliderCenterInWorldSpace, playerForward * distance), out hit, stateMachine.Player.ResizableCapsuleCollider.SlopeData.FloatRayDistance, stateMachine.Player.LayerData.GroundLayer, QueryTriggerInteraction.Ignore))
+            {
+                return;
+            }
+
+            if (!Physics.Raycast(downwardsRay, out hit, stateMachine.Player.ResizableCapsuleCollider.SlopeData.FloatRayDistance, stateMachine.Player.LayerData.GroundLayer, QueryTriggerInteraction.Ignore))
+            {
+                return;
+            }
+
+            stateMachine.Player.Rigidbody.MovePosition(hit.point);
+            tickTime = nowTime;
         }
+
+        protected override void OnContactWithGroundExited(Collider collider)
+        {
+            base.OnContactWithGroundExited(collider);
+            Debug.Log("test");
+        }
+
+
+        
 
     }
 }

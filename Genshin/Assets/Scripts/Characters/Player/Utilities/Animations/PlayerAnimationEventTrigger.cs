@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerAnimationEventTrigger : MonoBehaviour
     {
