@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(PlayerResizableCapsuleCollider))]
@@ -26,8 +26,9 @@ namespace GenshinImpactMovementSystem
 
         public Transform MainCameraTransform { get; private set; }
 
-        private PlayerMovementStateMachine movementStateMachine;
+        private PlayerStateMachine movementStateMachine;
 
+        public Transform TestObject;
         private void Awake()
         {
             CameraRecenteringUtility.Initialize();
@@ -41,7 +42,7 @@ namespace GenshinImpactMovementSystem
 
             MainCameraTransform = Camera.main.transform;
 
-            movementStateMachine = new PlayerMovementStateMachine(this);
+            movementStateMachine = new PlayerStateMachine(this);
         }
 
         private void Start()

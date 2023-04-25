@@ -1,12 +1,10 @@
 using UnityEngine;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
     public class PlayerFallingState : PlayerAirborneState
     {
-        private Vector3 playerPositionOnEnter;
-
-        public PlayerFallingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerFallingState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 
@@ -18,7 +16,7 @@ namespace GenshinImpactMovementSystem
 
             stateMachine.ReusableData.MovementSpeedModifier = 0f;
 
-            playerPositionOnEnter = stateMachine.Player.transform.position;
+            stateMachine.ReusableData.playerPositionOnFall = stateMachine.Player.transform.position;
 
             ResetVerticalVelocity();
         }
@@ -28,6 +26,7 @@ namespace GenshinImpactMovementSystem
             base.Exit();
 
             StopAnimation(stateMachine.Player.AnimationData.FallParameterHash);
+            stateMachine.ReusableData.playerPositionOnFall = Vector3.down;
         }
 
         public override void PhysicsUpdate()
@@ -57,7 +56,8 @@ namespace GenshinImpactMovementSystem
 
         protected override void OnContactWithGround(Collider collider)
         {
-            float fallDistance = playerPositionOnEnter.y - stateMachine.Player.transform.position.y;
+            float fallStartY = stateMachine.ReusableData.playerPositionOnFall.y;
+            float fallDistance = fallStartY - stateMachine.Player.transform.position.y;
 
             if (fallDistance < airborneData.FallData.MinimumDistanceToBeConsideredHardFall)
             {

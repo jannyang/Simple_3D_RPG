@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
-    public class PlayerAirborneState : PlayerMovementState
+    public class PlayerAirborneState : PlayerBaseState
     {
-        public PlayerAirborneState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
+        public PlayerAirborneState(PlayerStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
         }
 
@@ -32,6 +33,36 @@ namespace GenshinImpactMovementSystem
         protected override void OnContactWithGround(Collider collider)
         {
             stateMachine.ChangeState(stateMachine.LightLandingState);
+        }
+
+        protected override void AddInputActionsCallbacks()
+        {
+            base.AddInputActionsCallbacks();
+
+            stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
+        }
+
+        protected override void RemoveInputActionsCallbacks()
+        {
+            base.RemoveInputActionsCallbacks();
+
+            stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
+        }
+
+
+        protected virtual void OnJumpStarted(InputAction.CallbackContext context)
+        {
+            float fallStartY = stateMachine.ReusableData.playerPositionOnFall.y;
+            float playerY = stateMachine.Player.Rigidbody.position.y;
+            if (fallStartY > playerY - 1.8)     // TODO 플레이어 기본 높이로 설정
+            { 
+                stateMachine.ChangeState(stateMachine.FlyingState);
+            }
+            else
+            {
+                stateMachine.ChangeState(stateMachine.FallingState);
+            }
+
         }
     }
 }

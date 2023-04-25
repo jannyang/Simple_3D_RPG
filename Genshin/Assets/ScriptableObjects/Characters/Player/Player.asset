@@ -220,6 +220,8 @@ MonoBehaviour:
     <FallData>k__BackingField:
       <FallSpeedLimit>k__BackingField: 10
       <MinimumDistanceToBeConsideredHardFall>k__BackingField: 3
+    <FlyData>k__BackingField:
+      <FallSpeedLimit>k__BackingField: 3
   <AttackData>k__BackingField:
     <AttackInfoDatas>k__BackingField:
     - <AttackName>k__BackingField: "\uAE30\uBCF81\uD0C0"
@@ -227,7 +229,7 @@ MonoBehaviour:
       <ComboTransitionTime>k__BackingField: 0.6
       <ForceTransitionTime>k__BackingField: 0.2
       <ForceTime>k__BackingField: 0.1
-      <ForceDistance>k__BackingField: 1
+      <ForceDistance>k__BackingField: -1
       <Damage>k__BackingField: 0
     - <AttackName>k__BackingField: "\uAE30\uBCF82\uD0C0"
       <ComboStateIndex>k__BackingField: 2

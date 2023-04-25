@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
-    public class PlayerMovementState : IState
+    public class PlayerBaseState : IState
     {
-        protected PlayerMovementStateMachine stateMachine;
+        protected PlayerStateMachine stateMachine;
 
         protected readonly PlayerGroundedData groundedData;
         protected readonly PlayerAirborneData airborneData;
 
-        public PlayerMovementState(PlayerMovementStateMachine playerMovementStateMachine)
+        public PlayerBaseState(PlayerStateMachine playerMovementStateMachine)
         {
             stateMachine = playerMovementStateMachine;
 

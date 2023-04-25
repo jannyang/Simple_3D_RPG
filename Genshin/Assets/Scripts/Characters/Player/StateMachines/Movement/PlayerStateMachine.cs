@@ -1,6 +1,6 @@
-namespace GenshinImpactMovementSystem
+namespace RPGStateMachineSystem
 {
-    public class PlayerMovementStateMachine : StateMachine
+    public class PlayerStateMachine : StateMachine
     {
         public Player Player { get; }
         public PlayerStateReusableData ReusableData { get; }
@@ -22,11 +22,13 @@ namespace GenshinImpactMovementSystem
 
         public PlayerJumpingState JumpingState { get; }
         public PlayerFallingState FallingState { get; }
+        public PlayerFlyingState FlyingState { get; }
+        
 
         public PlayerComboAttackState ComboAttackingState { get; }
 
 
-        public PlayerMovementStateMachine(Player player)
+        public PlayerStateMachine(Player player)
         {
             Player = player;
             ReusableData = new PlayerStateReusableData();
@@ -48,6 +50,7 @@ namespace GenshinImpactMovementSystem
 
             JumpingState = new PlayerJumpingState(this);
             FallingState = new PlayerFallingState(this);
+            FlyingState = new PlayerFlyingState(this);
 
             ComboAttackingState = new PlayerComboAttackState(this);
         }
