@@ -25,9 +25,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
     private Vector2 curMovementInput;
 
+    public static PlayerController instance;
+
     private void Awake()
     {
         rig = GetComponent<Rigidbody>();
+        instance = this;
     }
     private void Start()
     {
@@ -64,6 +67,12 @@ public class PlayerController : MonoBehaviour
                 rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
+    }
+
+    public void OnPauseInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            ToggleCursor(true);
     }
 
 

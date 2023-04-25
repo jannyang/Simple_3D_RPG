@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656f68b1bc02bb04a9a8f3eeb4406e0b, type: 3}
+  m_Name: Shelter
+  m_EditorClassIdentifier: 
+  id: shelter
+  spawnPrefab: {fileID: 3461398327303910963, guid: 50510db0d1cb9c441bf89a93a8a8f151, type: 3}
